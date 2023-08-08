@@ -36,3 +36,20 @@ var once = function(fn) {
 };
 
 // memoize
+function memoize(fn) {
+    //hashmap
+    // key stringified args  and val == function result
+    let cache={
+      };
+    return function(...args) {
+        const key =JSON.stringify(args);
+        if(key in cache){
+            return cache[key];
+        }
+        cache[key]=fn(...args);
+        return cache[key];
+
+        
+    }
+}
+//decorator design pattern
